@@ -1,0 +1,139 @@
+// card text
+$card_title--font: $regular-15;
+$card_title--color: $text-color-dark;
+$card_title--margin: 6px 0;
+
+$card_text--font: $regular-13;
+$card_text--color: $text-color-gray;
+$card_text--margin: 6px 0 8px;
+
+$card_info--font: $regular-11-sm;
+$card_info--color: $text-color-lightgray;
+$card_info--margin: 8px 0 0;
+
+
+// card img
+$card_img--margin: 0 0 15px;
+$card_img--size: 140px;
+$card_img--borderRadius: 4px;
+//------------------------------------------------------------------------------------------------------------
+
+
+.card-wrap {
+
+  .text-box {
+    flex: 1;
+    font-size: 0;
+
+    &.text-view-all {
+      .card-title, .card-text {
+        display: block;
+        height: auto;
+      }
+    }
+
+    .card-title {
+      position: relative; 
+      font: $card_title--font;
+      color: $card_title--color;
+      margin: $card_title--margin;
+      @include text-multi-line(1, 1.5em);
+
+      &.text-view-all {
+        display: block;
+        height: auto;
+      }
+
+      [class*=flag-] {
+        margin-right: 8px;
+        vertical-align: top;
+      }
+    }
+    .card-text {
+      font: $card_text--font;
+      color: $card_text--color;
+      margin: $card_text--margin;
+      @include text-multi-line;
+
+      &.text-view-all {
+        display: block;
+        height: auto;
+      }
+    }
+  }
+
+  .img-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: $card_img--margin;
+    width: 100%;
+    height: $card_img--size;
+    border-radius: $card_img--borderRadius;
+    background: #D9D9D9;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &.img-video::after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: url(../images/icon/icon_play.png) 50% / auto 100% no-repeat;
+    }
+  }
+
+  .card-info {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    ul { font-size: 0; }
+
+    li {
+      display: inline-block;
+      font: $card_info--font;
+      color: $card_info--color;
+
+      & + li::before {
+        content: '･';
+        display: inline-block;
+        width: 14px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+
+//------------------------------------------------------------------------------------------------------------
+// card text
+$pc_card_title--font: $regular-16;
+$pc_card_text--font: $regular-14;
+
+// card img
+$pc_card_img--size: 350px;
+//------------------------------------------------------------------------------------------------------------
+
+@media (min-width: 900px) {
+  .card-wrap {
+    .text-box {
+      .card-title { font-size: $pc_card_title--font; }
+      .card-text { font-size: $pc_card_text--font; }
+    }
+  
+    .img-box { height: $pc_card_img--size; }
+
+    li.swiper-slide:hover .card-title { text-decoration: underline; }
+  }
+}

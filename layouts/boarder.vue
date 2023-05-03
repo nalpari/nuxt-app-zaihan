@@ -1,0 +1,4 @@
+<template>
+  board
+  <slot />
+</template>

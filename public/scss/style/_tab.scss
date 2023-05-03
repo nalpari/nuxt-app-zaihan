@@ -1,0 +1,313 @@
+ // tab
+$tab--font: $regular-15;
+$tab--bgColor: $white;
+$tab_on--font: $bold-15;
+$tab_cont--margin: 20px 0 0;
+
+$pc_tab--font: $regular-16;
+$pc_tab_on--font: $bold-16;
+
+// type round
+$tab_round--height: 36px;
+$tab_round--padding: 0 13px;
+$tab_round--gab: 8px;
+$tab_round--borderRadius: 100px;
+$tab_round--color: $text-color-dark;
+$tab_round--bgColor: $white;
+$tab_round--borderColor: $line;
+$tab_round_on--color: $white;
+$tab_round_on--bgColor: $red;
+$tab_round_on--borderColor: $red;
+
+// type round hover
+$tab_round_hover--color: $red_hover;
+$tab_round_hover--bgColor: $white;
+$tab_round_hover--borderColor: $red_hover;
+$tab_round_on_hover--color: $white;
+$tab_round_on_hover--bgColor: $red_hover;
+$tab_round_on_hover--borderColor: $red_hover;
+
+// type round disabled
+$tab_round_disabled--color: $text-color-disabled;
+$tab_round_disabled--bgColor: $disabled_bg;
+$tab_round_disabled--borderColor: $disabled;
+$tab_round_on_disabled--color: $text-color-disabled;
+$tab_round_on_disabled--bgColor: $disabled;
+$tab_round_on_disabled--borderColor: $disabled;
+
+
+// type line
+$tab_line--height: 46px;
+$tab_line--padding: 0 16px;
+$tab_line--color: $text-color-placeholder;
+$tab_line--bgColor: transparent;
+$tab_line--borderColor: $line;
+$tab_line_on--color: $text-color-dark;
+$tab_line_on--borderColor: $text-color-dark;
+
+// type line hover
+$tab_line_hover--color: $red_hover;
+$tab_line_on_hover--color: $red_hover;
+$tab_line_on_hover--borderColor: $red_hover;
+
+// type line disabled
+$tab_line_disabled--color: $text-color-disabled;
+$tab_line_on_disabled--color: $text-color-disabled;
+$tab_line_on_disabled--borderColor: $line;
+
+
+// type square
+$tab_square--height: 36px;
+$tab_square--gap: 10px;
+$tab_square--color: $text-color-dark;
+$tab_square--bgColor: $white;
+$tab_square--borderColor: $line;
+$tab_square_on--color: $white;
+$tab_square_on--bgColor: $dark;
+$tab_square_on--borderColor: $dark;
+
+// type line hover
+$tab_square_hover--borderColor: $dark;
+$tab_square_on_hover--bgColor: $dark_hover;
+$tab_square_on_hover--borderColor: $dark_hover;
+
+// type line disabled
+$tab_square_disabled--color: $text-color-disabled;
+$tab_square_disabled--bgColor: $disabled_bg;
+$tab_square_disabled--borderColor: $line_disabled;
+$tab_square_on_disabled--color: $text-color-disabled;
+$tab_square_on_disabled--bgColor: $disabled_bg;
+$tab_square_on_disabled--borderColor: $disabled_bg;
+
+//------------------------------------------------------------------------------------------------------------
+.tab-section {
+  margin: 0 -16px;
+  background: $tab--bgColor;
+  z-index: $layout--zIndex;
+}
+
+.tab-section .swiper-wrapper {
+  display: inline-flex;
+  font: $tab--font;
+  width: auto;
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    width: auto !important;
+    word-break: keep-all;
+
+    &.swiper-slide.active {
+      font: $tab_on--font;
+    }
+  }
+
+  &.type-round li {
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: $tab_round--height;
+    padding: $tab_round--padding;
+    border-radius: $tab_round--borderRadius;
+    color: $tab_round--color;
+    background-color: $tab_round--bgColor;
+    @include border-inside($tab_round--borderColor);
+    cursor: pointer;
+
+    &.disabled {
+      color: $tab_round_disabled--color;
+      background-color: $tab_round_disabled--bgColor;
+      @include border-inside($tab_round_disabled--borderColor);
+      cursor: no-drop;
+      pointer-events: none;
+    }
+
+    &.active {
+      color: $tab_round_on--color;
+      background-color: $tab_round_on--bgColor;
+      @include border-inside($tab_round_on--borderColor);
+
+      &.disabled {
+        color: $tab_round_on_disabled--color;
+        background-color: $tab_round_on_disabled--bgColor;
+        @include border-inside($tab_round_on_disabled--borderColor);
+      }
+    }
+
+    &+li { margin-left: $tab_round--gab; }
+  }
+
+
+  &.type-line li {
+    justify-content: center;
+    height: $tab_line--height;
+    padding: $tab_line--padding;
+    color: $tab_line--color;
+    box-shadow: inset 0 -1px 0 $tab_line--borderColor;
+
+    span {
+      position: relative;
+      height: 100%;
+      padding: 0 10px;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      background: $tab_line--bgColor;
+      cursor: pointer;
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 10px;
+        bottom: 0;
+        width: calc(100% - 20px);
+        height: 2px;
+      }
+    }
+    &.disabled {
+      span {
+        color: $tab_line_disabled--color;
+        cursor: no-drop;
+        pointer-events: none;
+      }
+    }
+
+    &.active {
+      span {
+        color: $tab_line_on--color;
+        &::after { background: $tab_line_on--borderColor; }
+      }
+
+      &.disabled {
+        span {
+          color: $tab_line_on_disabled--color;
+          &::after { background: $tab_line_on_disabled--borderColor; }
+        }
+      }
+    }
+  }
+}
+
+.tab-section {
+  .type-square {
+    display: flex;
+    li {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      
+      width: 100%;
+      height: $tab_square--height;
+
+      font: $tab--font;
+      color: $tab_square--color;
+      background: $tab_square--bgColor;
+      border: 1px solid $tab_square--borderColor;
+
+      &+li { margin-left: 10px; }
+
+      &.disabled {
+        color: $tab_square_disabled--color;
+        background: $tab_square_disabled--bgColor;
+        border-color: $tab_square_disabled--borderColor;
+        cursor: no-drop;
+        pointer-events: none;
+      }
+
+      &.active {
+        color: $tab_square_on--color;
+        background: $tab_square_on--bgColor;
+        border-color: $tab_square_on--borderColor;
+
+        &.disabled {
+          color: $tab_square_on_disabled--color;
+          background: $tab_square_on_disabled--bgColor;
+          border-color: $tab_square_on_disabled--borderColor;
+        }
+      }
+    }
+  }
+}
+
+.tab-content {
+	display: none;
+  // margin: $tab_cont--margin;
+	&.show { display: block; }
+}
+
+.tab-section {
+  position: relative;
+  overflow: hidden;
+
+  &.tab-fix {
+    .swiper-wrapper { width: 100%; }
+    .type-line li { flex: 1; }
+  }
+}
+
+
+// tab
+$pc_tab--font: $regular-16;
+$pc_tab_on--font: $bold-16;
+
+//------------------------------------------------------------------------------------------------------------
+
+@media (min-width: 900px) {
+  .tab-section {
+    .swiper-wrapper {
+      font: $pc_tab--font;
+      li.swiper-slide.active { font: $pc_tab_on--font; }
+    }
+
+    .type-square li { font: $pc_tab--font; }
+  }
+
+  .tab-section .swiper-wrapper {
+    &.type-round {
+      width: calc(100% +  8px);
+      margin-right: 8px;
+      li {
+        min-width: calc(20% - 8px);
+        justify-content: center;
+        &:hover {
+          color: $tab_round_hover--color;
+          background-color: $tab_round_hover--bgColor;
+          @include border-inside($tab_round_hover--borderColor);
+        }
+  
+        &.active:hover {
+          color: $tab_round_on_hover--color;
+          background-color: $tab_round_on_hover--bgColor;
+          @include border-inside($tab_round_on_hover--borderColor);
+        }
+      }
+    }
+
+    &.type-line li {
+      &:hover { color: $tab_line_hover--color; }
+      &.active {
+        span:hover {
+          color: $tab_line_on_hover--color;
+          &::after { background: $tab_line_on_hover--borderColor; }
+        }
+      }
+    }
+  }
+
+  .tab-setcion .type-square {
+    li {
+      &:hover, &:active, &:focus {
+        border-color: $tab_square_on--borderColor;
+      }
+      &.active {
+        &:hover, &:active, &:focus {
+          background: $tab_square_on_hover--bgColor;
+          border-color: $tab_square_on_hover--borderColor;
+        }
+      }
+    }
+  }
+
+}

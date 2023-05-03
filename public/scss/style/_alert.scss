@@ -1,0 +1,72 @@
+// alert
+$alert--dim: rgba(0,0,0,0.5);
+$alert--zIndex: 150;
+$alert--borderRadius: 8px;
+
+$alert--width: 80%;
+$alert--maxWidth: 320px;
+$alert--padding: 35px 25px 25px;
+$alert--margin: 25px 0;
+$alert--bgColor: $white;
+
+$alert_btn--marginTop: 25px;
+$alert_btn--gap: 10px;
+
+//------------------------------------------------------------------------------------------------------------
+
+.alert-wrap {
+	display: none;
+	width: 100%;
+	height: 100%;
+
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: $alert--zIndex;
+	background: $alert--dim;
+	
+	.alert-contents {
+    position: relative;
+		width: $alert--width;
+		max-width: $alert--maxWidth;
+		height: auto;
+		padding: $alert--padding;
+		margin: $alert--margin;
+		border-radius: $alert--borderRadius;
+
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+
+		background: $alert--bgColor;
+		word-break: keep-all;
+		text-align: center;
+
+    .btn-close {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      z-index: 1;
+
+			&:hover, &:focus, &:active {
+				background-color: $cover_4;
+			}
+
+			&::before {
+				background-size: auto 15px;
+				background-position: -69px 4px;
+			}
+    }
+
+		.contents { padding: 0; }
+	}
+	
+	.button-area {
+		margin-top: $alert_btn--marginTop;
+		
+		button+button {
+			margin-left: $alert_btn--gap
+		}
+	}
+}

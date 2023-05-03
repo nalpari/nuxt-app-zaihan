@@ -1,0 +1,40 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: auto;
+}
+
+html {
+	font-family: $font-family;
+	color: $text-color-dark;
+	font-weight: $text-weight-basic;
+	line-height: $line-height-basic;
+	letter-spacing: $text-spacing-basic;
+	vertical-align: baseline;
+	cursor: default;
+}
+
+ol, ul { list-style: none; }
+table { width: 100%; border-collapse: collapse; border-spacing: 0; }
+select::-ms-expand { display: none; }
+a, button, input,  textarea, select {
+	color: inherit;
+	border: none;
+	text-decoration: none;
+	-webkit-appearance: none;
+		 -moz-appearance: none;
+			  	appearance: none;
+}
+input[type=number] { -moz-appearance: textfield; }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+input::-webkit-input-placeholder { text-align: left !important; }
+input:-ms-input-placeholder { text-align: left !important; }
+input::placeholder { text-align: left !important; }
+button, a { cursor: pointer; }
+button[disabled], input[disabled], select[disabled] { cursor: default; }

@@ -1,0 +1,53 @@
+// toast message
+$toast--maxWidth: 90vw;
+$toast--padding: 6px 16px;
+$toast--font: $regular-13;
+$toast--color: $white;
+$toast--bgColor: $dark;
+$toast--bordreRadius: 4px;
+$toast--opacity: 0.8;
+$toast--zIndex: 999;
+//------------------------------------------------------------------------------------------------------------
+.toast {
+	display: block;
+	width: auto;
+	max-width: $toast--maxWidth;
+	padding: $toast--padding;
+
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: $toast--zIndex;
+
+	color: $toast--color;
+	font: $toast--font;
+	text-align: center;
+	white-space: nowrap;
+
+	border-radius: $toast--bordreRadius;
+	overflow: hidden;
+
+	opacity: 0;
+	visibility: hidden;
+  background: $toast--bgColor;
+	transition: opacity .5s, visibility .5s;
+}
+.toast.show {
+	opacity: $toast--opacity;
+	visibility: visible;
+}
+
+@media (min-width: 900px) {
+  .toast {
+    left: calc(50% + 230px);
+    transform: translateX( calc(-50% - 115px) );
+  }
+}
+
+@media (min-width: 1600px) {
+  .toast {
+    left: calc(50% + 290px);
+    transform: translateX( calc(-50% - 145px) );
+  }
+}

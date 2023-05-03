@@ -1,0 +1,168 @@
+// top-area
+$profile_user--margin: 0 0 13px;
+$profile_user_img--size: 34px;
+$profile_user_img--borderColor: #ddd;
+$profile_user_name--marginLeft: 6px;
+$profile_user_name--font: $bold-15;
+$profile_user_name--color: $text-color-dark;
+$profile_user_time--font: $regular-11-sm;
+$profile_user_time--color: $text-color-lightgray;
+
+$profile_btnsub--font: $regular-12;
+$profile_btnsub--marginLeft: 8px;
+$profile_btnsub--padding: 3px 6px;
+
+$profile_btnsub--bgColor: $white;
+$profile_btnsub--borderColor: $line;
+$profile_btnsub--color: $text-color-placeholder;
+
+$profile_btnsub_on--bgColor: $dark;
+$profile_btnsub_on--borderColor: $dark;
+$profile_btnsub_on--color: $white;
+
+.user-box {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+
+  .user-img {
+    width: $profile_user_img--size;
+    height: $profile_user_img--size;
+    box-shadow: 0 0 0 1px $profile_user_img--borderColor;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  img {
+    width: 100%;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: $profile_user_name--marginLeft;
+    font: $profile_user_name--font;
+    color: $profile_user_name--color;
+
+    .btn-sub {
+      flex: none;
+      font: $profile_btnsub--font;
+      color: $profile_btnsub--color;
+      padding: $profile_btnsub--padding;
+      margin-left: $profile_btnsub--marginLeft;
+      background: $profile_btnsub--bgColor;
+      border: 1px solid $profile_btnsub--borderColor;
+
+      &.on {
+        color: $profile_btnsub_on--color;
+        background: $profile_btnsub_on--bgColor;
+        border: 1px solid $profile_btnsub_on--borderColor;
+      }
+    }
+    
+    .time {
+      width: 100%;
+      font: $profile_user_time--font;
+      color: $profile_user_time--color;
+    }
+
+    .dot-info  {
+      width: 100%;
+    }
+  }
+
+  .btn-menu {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &::before {
+      background-size: auto 18px;
+      background-position: -108px 0;
+    }
+  }
+
+  .menu-wrap {
+    display: none;
+    width: 70px;
+    margin-top: 18 + 8px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.popup-basic  {
+  .user-box {
+    padding-bottom: 13px;
+    margin-bottom: 13px;
+    border-bottom: 1px solid $line;
+    .user-info { margin-left: 10px; }
+  }
+}
+
+.reply-area {
+  .user-box {
+    margin: 20px 0 12px;
+
+    .user-img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+.comment-top {
+  .user-box {
+    align-items: center;
+    .user-info {
+      font: $regular-11;
+    }
+    .user-img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+.store-info {
+  .user-box { margin-bottom: 13px; }
+}
+
+.moment-info-wrap {
+  .user-box {
+    align-items: center;
+    .user-info {
+      font: $bold-13;
+    }
+    .user-img {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .comment-top {
+    .user-box {
+      .user-img {
+        width: 34px;
+        height: 34px;
+        img { height: 100%; }
+      }
+
+      .menu-wrap { top: 10px; }
+
+      .user-info { font-size: 15px; }
+    }
+  }
+}
+
+//------------------------------------------------------------------------------------------------------------

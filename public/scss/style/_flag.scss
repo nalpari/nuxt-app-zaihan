@@ -1,0 +1,79 @@
+// flag
+$flag--font: $bold-11;
+$flag--padding: 0 5px;
+$flag--textColor: $white;
+$flag--borderRadius: 2px;
+$flag--height: 20px;
+
+$flag_lg--font: $regular-12;;
+$flag_lg--padding: 0 6px;
+$flag_lg--borderRadius: 4px;
+$flag_lg--height: 24px;
+
+$flag--info:    #FD2414;
+$flag--help:    #FD2414;
+$flag--market:  #FFC600;
+$flag--job:     #A200FF; 
+$flag--estate:  #0072FF;
+$flag--ad:      #FF871A;
+$flag--basic:   #E6E6E6;
+$flag--dark:    #333333;
+$flag--lineBg:  #FFFFFF;
+$flag--lineBorder: #E6E6E6;
+
+//------------------------------------------------------------------------------------------------------------
+[class*=flag] {
+  display: inline-flex;
+  align-items: center;
+  height: $flag--height;
+  padding: $flag--padding;
+
+  font: $flag--font;
+  color: $flag--textColor;
+  border-radius: $flag--borderRadius;
+  vertical-align: middle;
+}
+
+.flag {
+  $flagBg-data: (
+    info:       $flag--info,
+    help:       $flag--help,
+    market:     $flag--market,
+    job:        $flag--job,
+    estate:     $flag--estate,
+    ad:         $flag--ad,
+    basic:      $flag--basic,
+    dark:       $flag--dark,
+    line:       $flag--lineBg,
+    red-line:   $flag--lineBg
+  );
+
+  @each $flag-name, $flag-bg in $flagBg-data {
+    &-#{$flag-name} { background: $flag-bg; }
+  }
+}
+.flag {
+  &-basic, &-dark, &-line {
+    height: $flag_lg--height;
+    padding: $flag_lg--padding;
+    font: $flag_lg--font;
+    line-height: $flag_lg--height;
+    border-radius: $flag_lg--borderRadius;
+  }
+  &-basic { color: $text-color-dark;}
+  &-line  {
+    color: $text-color-placeholder;
+    border: 1px solid $flag--lineBorder;
+  }
+  &-red-line {
+    color: $red;
+    border: 1px solid $red;
+  }
+}
+
+@media (min-width: 900px) {
+  [class*=flag] {
+    height: 24px;
+    font-size: 13px;
+  }
+}

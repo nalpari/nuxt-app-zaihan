@@ -1,0 +1,438 @@
+// btn
+$btn--font: $bold-16;
+$btn--font_spacing: $text-spacing-lg;
+$btn--padding: 11px 10px;
+$btn--textColor: $white;
+$btn--borderRadius: 4px;
+//------------------------------------------------------------------------------------------------------------
+//btn footer
+$btn_footer--font: $bold-16;
+$btn_footer--padding: 11px 10px;
+//------------------------------------------------------------------------------------------------------------
+//btn sm
+$btn_sm--font: $regular-13;
+$btn_sm--padding: 9px 10px 10px;
+//------------------------------------------------------------------------------------------------------------
+// btn disabled
+$btn_disabled--bgColor: $disabled;
+$btn_disabled--textColor: $text-color-disabled;
+//------------------------------------------------------------------------------------------------------------
+// btn basic
+$btn_basic--bgColor: $gray;
+$btn_basic_hover--bgColor: $gray_hover;
+//------------------------------------------------------------------------------------------------------------
+// btn red
+$btn_primary--bgColor: $red;
+$btn_primary_hover--bgColor: $red_hover;
+//------------------------------------------------------------------------------------------------------------
+// btn dark
+$btn_dark--bgColor: $dark;
+$btn_dark_hover--bgColor: $dark_hover;
+//------------------------------------------------------------------------------------------------------------
+// btn line
+$btn_line--font: $regular-15;
+$btn_line--color: $text-color-dark;
+$btn_line--bgColor: $white;
+$btn_line--borderColor: $dark;
+$btn_line_hover--color: $white;
+$btn_line_hover--bgColor: $dark;
+//------------------------------------------------------------------------------------------------------------
+// btn select
+$btn_select--height: 44px;
+$btn_select--padding: 0 16px;
+$btn_select--font: $regular-15;
+$btn_select--color: $text-color-dark;
+$btn_select--bgColor: $white;
+$btn_select--borderColor: $line;
+$btn_select--iconSize: 24px;
+
+
+//------------------------------------------------------------------------------------------------------------
+
+[class^="btn-"] {
+  position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+  flex: 1;
+
+  padding: $btn--padding;
+	font: $btn--font;
+	color: $btn--textColor;
+  letter-spacing: $btn--font_spacing;
+	border-radius: $btn--borderRadius;
+	transition: all ease-in .05s;
+
+	&[disabled="disabled"]:not(.view-active),
+  &:disabled:not(.view-active) {
+    color: $btn_disabled--textColor;
+		background: $btn_disabled--bgColor;
+		pointer-events: none;
+	}
+
+  &.view-active { pointer-events: none; }
+
+	&.btn-sm {
+		font: $btn_sm--font;
+		padding: $btn_sm--padding;
+	}
+
+  &.w-auto {
+    flex: none;
+  }
+}
+
+.btn {
+	&-basic {
+		background: $btn_basic--bgColor;
+		&:hover,&:active, &:focus { 
+      background: $btn_basic_hover--bgColor;
+    }
+	}
+
+	&-primary {
+		background: $btn_primary--bgColor;
+		&:hover,&:active, &:focus {
+      background: $btn_primary_hover--bgColor;
+    }
+	}
+
+  &-dark {
+		background: $btn_dark--bgColor;
+		&:hover,&:active, &:focus {
+      background: $btn_dark_hover--bgColor;
+    }
+	}
+
+  &-line {
+    font: $btn_line--font;
+    color: $btn_line--color;
+    background: $btn_line--bgColor;
+    @include border-inside($btn_line--borderColor);
+
+		&:hover,&:active, &:focus {
+      color: $btn_line_hover--color;
+      background: $btn_line_hover--bgColor;
+    }
+
+    &[disabled="disabled"], &:disabled {
+      box-shadow: none;
+    }
+  }
+}
+
+
+.btn-select {
+  justify-content: flex-start;
+  width: 100%;
+  height: $btn_select--height;
+  padding: $btn_select--padding;
+  font: $btn_select--font;
+  color: $btn_select--color;
+  background: $btn_select--bgColor;
+  border-radius: 0;
+  border-bottom: 1px solid $btn_select--borderColor;
+
+  &::after {
+    content: '';
+    display: block;
+    width: $btn_select--iconSize;
+    height: $btn_select--iconSize;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: url(../images/icon/icon_dropdown_lg.png) 0 50%/auto 100% no-repeat;
+  }
+
+  &[disabled="disabled"], &:disabled {
+    background: #fff !important;
+    color: #aaa !important;
+    &::after { background-position: -48px 0; }
+  }
+}
+
+
+.button-area {
+  display: flex;
+	font-size: 0 !important;
+	[class^="btn-"] + [class^="btn-"] { margin-left: 10px; }
+
+  &.d-block {
+    button {
+      width: 100%;
+
+      & + [class^="btn-"] {
+        margin: 10px 0 0;
+      }
+    }
+  }
+}
+
+.footer-button-area {
+	display: flex;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+	[class^="btn-"] {
+		font: $btn_footer--font;
+		padding: $btn_footer--padding;
+    border-radius: 0;
+	}
+
+  &.view-pc { display: none; }
+}
+
+@media (min-width: 900px) {
+  .button-area {
+    justify-content: center;
+    
+    &.option-maxwidth {
+      [class^="btn-"] { max-width: 160px; }
+    }
+  }
+  
+  .footer-button-area {
+    position: relative;
+    margin: 25px auto 34px;
+    justify-content: center;
+  
+    [class^="btn-"] { max-width: 180px; }
+
+    &.view-pc { display: flex; }
+  }
+}
+
+
+//------------------------------------------------------------------------------------------------------------
+// icon button
+$btn_icon--size: 24px;
+//------------------------------------------------------------------------------------------------------------
+
+// etc button
+.btn-kakao {
+  background: #FEE500;
+  color: #111;
+  &::before {
+    background-position: 0 0;
+  }
+  &:hover,&:active, &:focus {
+    background: #FEB300;
+  }
+}
+
+.btn-wechat {
+  background: #2DC100;
+  &::before {
+    background-position: 0px -30px;
+  }
+  &:hover,&:active, &:focus {
+    background: #1D7D00;
+  }
+}
+
+.btn-apple {
+  background: #000000;
+  &::before {
+    background-position: 0px -61px;
+  }
+  &:hover,&:active, &:focus {
+    background: #222222;
+  }
+}
+
+.btn-kakao, .btn-wechat, .btn-apple {
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: $btn_icon--size;
+    height: $btn_icon--size;
+    background-size: 55px auto;
+    background-image: url(../images/icon/iconpack_sns.png);
+    background-repeat: no-repeat;
+  }
+
+  &[disabled="disabled"], &:disabled {
+    &::before {
+      background-position-x: 100%;
+    }
+	}
+}
+
+.btn-write {
+  flex: none;
+  padding: 8px 40px 8px 18px;
+  font: $regular-15;
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    width: $btn_icon--size;
+    height: $btn_icon--size;
+    background: url(../images/icon/icon_write.png) 50% / auto 100% no-repeat;
+  }
+}
+
+.header .icon-area .btn-write {
+  width: $btn_icon--size;
+  height: $btn_icon--size;
+  padding: 0;
+  font-size: 0;
+  background: none;
+  box-sizing: content-box;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../images/icon/icon_write.png) 0 0 / auto 24px no-repeat;
+  }
+}
+
+.btn-text {
+  color: #111;
+  word-break: keep-all;
+  white-space: nowrap;
+  padding: 8px 0;
+  margin-left: 6px;
+  background: $white;
+}
+
+$btn_header--data: (
+  search: 0,
+  qr:     0 - (29*1),
+  prev:   0 - (29*2),
+  home:   0 - (29*3),
+  close:  0 - (29*4),
+  menu:   0 - (29*5),
+  like:   0 - (29*6),
+  share:  0 - (29*7)
+);
+
+@each $btnName, $positionX in $btn_header--data {
+  .btn-#{$btnName} {
+    width: $btn_icon--size;
+    height: $btn_icon--size;
+    padding: 0;
+    font-size: 0;
+    background: none;
+    box-sizing: content-box;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-size: auto 24px;
+      background-image: url(../images/icon/iconpack_header.png);
+      background-repeat: no-repeat;
+    }
+  }
+  .btn-#{$btnName}::before { background-position: #{$positionX}px 0; }
+}
+
+.btn-reset {
+  position: relative;
+  flex: none;
+  font: $regular-13;
+  letter-spacing: $text-spacing-lg;
+  color: $text-color-dark;
+  padding: 6px 30px 6px 12px;
+  border-radius: 100px;
+  background: none;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px ;
+    background: url(../images/icon/icon_refresh.png) 50% / 100% auto no-repeat;
+  }
+
+  &:active {
+    background-color: $gray;
+  }
+
+  &[disabled="disabled"], &:disabled {
+    &::after { opacity: 0.2; }
+  }
+}
+
+.btn-filter {
+  position: relative;
+  flex: none;
+  font: $regular-13;
+  letter-spacing: $text-spacing-lg;
+  color: $text-color-dark;
+  padding: 6px 30px 6px 12px;
+  border-radius: 100px;
+  background: #F5F5F5;
+  z-index: 10;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    width: 20px;
+    height: 20px ;
+    background: url(../images/icon/icon_dropdown_sm.png) 0 50% / auto 100% no-repeat;
+  }
+
+  &:active {
+    background-color: $gray;
+  }
+
+  &[disabled="disabled"], &:disabled {
+    &::after { background-position: -40px 0; }
+  }
+}
+
+.btn-menu-line {
+  padding: 0;
+  width: 70px;
+  height: 35px;
+  font: $regular-15;
+  color: $text-color-dark;
+  border: 1px solid $line;
+  background: #fff;
+  border-radius: 0;
+}
+
+.btn-plus {
+  flex: none;
+  width: 34px;
+  height: 24px;
+  line-height: 23px;
+  padding: 0;
+  color: #fff;
+  font-weight: normal;
+  background: #333;
+  border-radius: 100px;
+}
+
+@media (min-width: 900px) {
+  .btn-reset {
+    font: $regular-15;
+    padding: 8px 30px 8px 12px;
+  }
+}
