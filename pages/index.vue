@@ -1,6 +1,4 @@
-<script setup>
-import useApi from '~/composables/useApi'
-
+<script setup lang='ts'>
 // definePageMeta({
 //   layout: 'boarder',
 // })
